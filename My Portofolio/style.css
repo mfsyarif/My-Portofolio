@@ -1,0 +1,899 @@
+/* ==========================================================================
+   1. PENGATURAN WARNA & AMBIENT PREMIUM
+   ========================================================================== */
+
+:root {
+    --bg-color: #050505; /* Hitam pekat sinematik */
+    --text-color: #e2e8f0;
+    --text-main: #ffffff;
+    --text-muted: #94a3b8;
+    --text-sub: #64748b;
+    
+    /* Tema Maroon Premium */
+    --card-bg: rgba(20, 10, 10, 0.6);       
+    --border-color: rgba(159, 18, 57, 0.3);  
+    --border-hover: #f43f5e;               
+    --accent-color: #ffb300;
+    --shadow-color: rgba(159, 18, 57, 0.15);
+    --btn-bg: #ffffff;
+    --btn-text: #050505;
+    --btn-hover: #f1f5f9;
+}
+
+[data-theme="light"] {
+    --bg-color: #f8fafc;        
+    --text-color: #334155;     
+    --text-main: #0f172a;      
+    --text-muted: #475569;     
+    --text-sub: #64748b;
+    
+    /* Tema Biru Logam Premium */
+    --card-bg: rgba(240, 246, 252, 0.85);   
+    --border-color: rgba(14, 165, 233, 0.25); 
+    --border-hover: #0284c7;               
+    --accent-color: #0284c7;
+    --shadow-color: rgba(14, 165, 233, 0.1);
+    --btn-bg: #0f172a;         
+    --btn-text: #ffffff;
+    --btn-hover: #1e293b;
+}
+
+/* ==========================================================================
+   2. BASE STYLE
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color); 
+    color: var(--text-color);
+    overflow-x: hidden;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Navigation Menu */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background-color: rgba(5, 5, 5, 0.4);
+    backdrop-filter: blur(20px); 
+    -webkit-backdrop-filter: blur(20px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+}
+
+[data-theme="light"] header {
+    background-color: rgba(248, 250, 252, 0.4);
+}
+
+header .logo {
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: var(--text-main);
+}
+
+nav a {
+    color: var(--text-color);
+    opacity: 0.6;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+}
+
+nav a:hover {
+    opacity: 1;
+    color: var(--accent-color);
+}
+
+.theme-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 25px;
+    transition: transform 0.3s;
+}
+
+.theme-btn:hover { transform: scale(1.2); }
+
+/* ==========================================================================
+   3. HERO + VIDEO BACKGROUND STYLES
+   ========================================================================== */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 120px 20px 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Wadah Video Latar Belakang */
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Di belakang konten kaca */
+}
+
+.video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Memastikan video memenuhi seluruh kotak hero tanpa ketarik */
+    opacity: 0.15; /* Diatur tipis agar teks Musthafa Fadhli Syarif tetap menonjol */
+}
+
+[data-theme="light"] .video-background video {
+    opacity: 0.12; /* Dinaikkan dari 0.04 agar video lebih kelihatan di mode terang */
+    filter: grayscale(30%); /* Opsional: memberi sedikit efek abu-abu agar warna video tidak merusak kontras teks */
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, transparent 20%, var(--bg-color) 80%);
+}
+
+/* Kotak Kaca Utama */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+    padding: 60px 50px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 24px; 
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 30px 60px var(--shadow-color);
+    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero h1 {
+    font-size: 3.5rem; 
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    color: var(--text-main);
+}
+
+.hero .hero-tagline {
+    font-size: 1rem;
+    color: var(--accent-color);
+    margin-bottom: 35px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.hero-about-text {
+    margin-bottom: 40px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 30px;
+}
+
+.hero-about-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    opacity: 0.85;
+    margin-bottom: 20px;
+}
+
+.hero-about-text p:last-child { margin-bottom: 0; }
+
+.btn {
+    display: inline-block;
+    padding: 16px 40px;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-radius: 50px; 
+    letter-spacing: 1px;
+    transition: all 0.4s ease;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px var(--border-hover);
+}
+
+/* ==========================================================================
+   4. PREMIUM CARD DESIGNS (PORTOFOLIO, AWARDS, TIMELINE)
+   ========================================================================== */
+
+.gallery-section, .awards-section, .experience-section, .about-section {
+    padding: 120px 8% 80px;
+    border-top: 1px solid var(--border-color);
+    position: relative;
+}
+
+h2 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+    color: var(--text-main);
+}
+
+/* Kartu-Kartu Interaktif Melayang */
+.portfolio-card, .award-card, .timeline-content, .committee-box {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portfolio-card:hover, .award-card:hover, .timeline-content:hover, .committee-box:hover {
+    transform: translateY(-12px) scale(1.02);
+    border-color: var(--border-hover);
+    box-shadow: 0 30px 60px var(--shadow-color);
+}
+
+/* Grid Project */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+.portfolio-card .image-wrapper {
+    overflow: hidden;
+    height: 250px;
+}
+
+.card-image {
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portfolio-card:hover .card-image {
+    transform: scale(1.08); /* Efek zoom-in sinematik gambarnya */
+}
+
+.card-info { padding: 30px; }
+
+.card-info .tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 14px;
+    border-radius: 30px;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-color);
+}
+
+.subtitle {
+    text-align: center;
+    color: var(--text-sub);
+    font-size: 1.05rem;
+    margin-bottom: 60px;
+    width: 100%;
+}
+
+.portfolio-grid .portfolio-card:nth-child(1) .tag { color: #38bdf8; } 
+.portfolio-grid .portfolio-card:nth-child(2) .tag { color: #4ade80; } 
+.portfolio-grid .portfolio-card:nth-child(3) .tag { color: #fbbf24; }
+
+.card-info h3 { font-size: 1.4rem; margin-bottom: 12px; color: var(--text-main); }
+.card-info p { color: var(--text-muted); line-height: 1.7; font-size: 0.95rem; }
+
+/* ==========================================================================
+   5. AWARDS SECTION STYLES (VERSI ULTRA PREMIUM)
+   ========================================================================== */
+
+.awards-section {
+    padding: 120px 8% 80px;
+    border-top: 1px solid var(--border-color);
+    position: relative;
+}
+
+/* Judul dengan Gradasi Emas Sinematik */
+.awards-section h2 {
+    text-align: center;
+    background: linear-gradient(135deg, #ffe082 0%, #ffb300 50%, #ffa000 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+}
+
+.awards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 35px;
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+/* Kartu Penghargaan dengan Bingkai Emas Tipis */
+.award-card {
+    background-color: var(--card-bg);
+    padding: 40px 30px;
+    border-radius: 24px; /* Sudut lebih melengkung modern */
+    border: 1px solid rgba(255, 179, 0, 0.15); /* Border emas transparan default */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Efek Lampu Sorot Emas saat di-Hover */
+.award-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    border-color: #ffb300; /* Border emas menyala penuh */
+    box-shadow: 0 20px 40px rgba(255, 179, 0, 0.1); /* Pendaran cahaya emas lembut */
+}
+
+/* Penyesuaian Bayangan di Tema Terang agar Tetap Lembut */
+[data-theme="light"] .award-card {
+    border: 1px solid rgba(2, 132, 199, 0.15); /* Menggunakan aksen biru di tema terang */
+}
+
+[data-theme="light"] .award-card:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 20px 40px var(--shadow-color);
+}
+
+/* Desain Ikon Penghargaan */
+.award-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    display: inline-block;
+    filter: drop-shadow(0 4px 8px var(--shadow-color));
+    transition: transform 0.4s ease;
+}
+
+.award-card:hover .award-icon {
+    transform: scale(1.2) rotate(6deg); /* Ikon sedikit membesar & miring estetis saat di-hover */
+}
+
+.award-card h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+/* Detail Juara/Kategori */
+.award-meta {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #ffb300; /* Warna teks penegas emas tetap menyala */
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+[data-theme="light"] .award-meta {
+    color: #0284c7; /* Berubah jadi biru penegas di tema terang */
+}
+
+.award-card p {
+    font-size: 0.98rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+/* ==========================================================================
+   6. EXPERIENCE TIMELINE SECTION (VERSI PERBAIKAN STABIL & PRESISI)
+   ========================================================================== */
+
+.experience-section {
+    padding: 120px 8% 80px;
+    border-top: 1px solid var(--border-color);
+    position: relative;
+    background-color: var(--bg-color);
+}
+
+.experience-section h2 {
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+/* Wadah Utama Alur Linimasa - Dipastikan Stabil */
+.timeline {
+    max-width: 850px;
+    margin: 40px auto 0;
+    position: relative;
+    padding-left: 45px;
+    border-left: 2px dashed var(--border-color); /* Garis pemandu vertikal */
+    text-align: left; /* Mengunci konten di dalam agar tidak ikut rata tengah */
+}
+
+/* Mengatur Jarak Tiap Item Pengalaman */
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Lingkaran Indikator pada Garis */
+.timeline-dot {
+    position: absolute;
+    left: -58px; /* Mengunci posisi pas di tengah garis pembatas */
+    top: 8px;
+    width: 24px;
+    height: 24px;
+    background-color: var(--bg-color);
+    border: 4px solid var(--accent-color);
+    border-radius: 50%;
+    z-index: 10;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Efek Glow saat Kotak Pengalaman di-Hover */
+.timeline-item:hover .timeline-dot {
+    background-color: var(--accent-color);
+    box-shadow: 0 0 20px var(--accent-color);
+    transform: scale(1.1);
+}
+
+/* Pengaturan Tanggal/Periode */
+.timeline-date {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--text-sub);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+/* Kotak Konten Pengalaman (Sistem Maroon & Biru Muda Glassmorphism) */
+.timeline-content {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 100%;
+    display: block; /* Memastikan kotak bekerja sebagai block element yang stabil */
+}
+
+.timeline-content h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+}
+
+/* Warna Nama Organisasi */
+.timeline-content .company {
+    color: var(--accent-color);
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    display: inline-block;
+    letter-spacing: 0.5px;
+}
+
+.timeline-content p {
+    font-size: 0.98rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+/* Efek Hover Lembut pada Kartu */
+.timeline-item:hover .timeline-content {
+    transform: translateY(-8px);
+    border-color: var(--border-hover);
+    box-shadow: 0 20px 40px var(--shadow-color);
+}
+
+/* Optimasi Responsif untuk HP */
+@media (max-width: 768px) {
+    .timeline {
+        padding-left: 30px;
+        margin-top: 30px;
+    }
+    .timeline-dot {
+        left: -41px;
+        width: 18px;
+        height: 18px;
+        top: 6px;
+        border-width: 3px;
+    }
+    .timeline-content {
+        padding: 20px;
+    }
+    .timeline-content h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* ==========================================================================
+   7. COMMITTEES GRID & BADGES
+   ========================================================================== */
+.committees-container { 
+    max-width: 850px; 
+    margin: 80px auto 0; 
+    padding-top: 60px; 
+    border-top: 1px solid var(--border-color); 
+}
+/* Ini judul utamanya yang kita buat rata tengah */
+.committees-container h3 {
+    font-size: 1.6rem;
+    color: var(--text-main);
+    margin-bottom: 25px;
+    text-align: center; /* Membuat judul kepanitiaan rata tengah secara simetris */
+    width: 100%;
+}
+.committees-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.committee-box { padding: 30px; }
+.committee-box h4 { font-size: 1.2rem; color: var(--text-main); margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+.committee-box ul li { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 12px; position: relative; padding-left: 20px; list-style: none; }
+.committee-box ul li::before { content: "▪"; position: absolute; left: 0; color: var(--accent-color); }
+
+/* Skills Section Badges */
+.skills-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+.skill-badge {
+    padding: 12px 24px;
+    background-color: var(--card-bg);
+    color: var(--text-main);
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+.skill-badge:hover {
+    border-color: var(--border-hover);
+    transform: scale(1.05) translateY(-3px);
+}
+
+/* Footer */
+footer { text-align: center; padding: 60px; color: var(--text-sub); font-size: 0.85rem; letter-spacing: 1px; }
+
+/* Animations */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+    .committees-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2.3rem; }
+    header { padding: 15px 5%; }
+    nav a { margin-left: 15px; font-size: 0.8rem; }
+}
+
+/* ==========================================
+   8. TAMPILAN AKTIVITAS & PELATIHAN BARU
+   ========================================== */
+.activities-grid-custom {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Membagi menjadi 2 kolom seimbang (Kiri & Kanan) */
+    gap: 30px; /* Jarak spasi antar kolom */
+    text-align: left;
+    margin-top: 25px;
+}
+
+.activity-list-new {
+    list-style: none; /* Menghilangkan bulatan list bawaan */
+    padding: 0;
+    margin: 0;
+}
+
+.activity-list-new li {
+    margin-bottom: 18px; /* Jarak antar poin pelatihan/kepanitiaan */
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-color, #ffffff); /* Otomatis menyesuaikan tema gelap/terang jika ada */
+}
+
+/* Responsif: Kalau dibuka di HP, otomatis berubah jadi 1 kolom bertumpuk */
+@media (max-width: 768px) {
+    .activities-grid-custom {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* ==========================================
+   SECTION 8: ACTIVITIES GRID CUSTOM (KEPANITIAAN & PELATIHAN)
+   ========================================== */
+.activities-grid-custom {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Membagi menjadi 2 kolom seimbang (Kiri & Kanan) */
+    gap: 30px; /* Jarak spasi antar kolom */
+    text-align: left;
+    margin-top: 25px;
+}
+
+.activity-list-new {
+    list-style: none; /* Menghilangkan bulatan list bawaan */
+    padding: 0;
+    margin: 0;
+}
+
+.activity-list-new li {
+    margin-bottom: 18px; /* Jarak antar poin pelatihan/kepanitiaan */
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-color, #ffffff); /* Otomatis mengikuti warna tema global */
+}
+
+/* Responsif: Kalau dibuka di HP, otomatis berubah jadi 1 kolom bertumpuk */
+@media (max-width: 768px) {
+    .activities-grid-custom {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* ==========================================
+   SECTION 9: HERO PROFILE LAYOUT & IMAGE
+   ========================================== */
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    z-index: 2;
+    position: relative;
+    gap: 50px;
+    width: 100%;
+}
+
+.hero-content {
+    flex: 1;
+    text-align: left; /* Teks rata kiri agar rapi berdampingan dengan foto */
+}
+
+.hero-profile-area {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-frame {
+    width: 400px;        /* Kita perlebar ukurannya agar padat di laptop */
+    height: 500px;       /* Kita tinggikan menjadi format portrait sinematik */
+    border-radius: 24px; /* Lengkungan sudut modern yang tegas, bukan bulat total */
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-frame:hover {
+    transform: translateY(-10px) scale(1.02); /* Sedikit membesar pas di-hover biar interaktif */
+    box-shadow: 0 30px 50px rgba(0, 0, 0, 0.8);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;        /* Biar foto nggak gepeng */
+    object-position: 50% 100%; /* FIX UTAMA: Kiri-kanan di tengah (50%), atas-bawah mentok ke bawah (100%) tepat di posisi kamu */
+}
+
+/* Responsif untuk HP: Ukuran otomatis menyesuaikan agar tidak kebesaran */
+@media (max-width: 968px) {
+    .hero-container {
+        flex-direction: column-reverse; /* Foto tetap di atas, teks di bawah saat di HP */
+        text-align: center;
+        padding: 0 20px;
+        gap: 30px;
+    }
+    .hero-content {
+        text-align: center;
+    }
+    .profile-frame {
+        width: 280px;  /* Di HP ukurannya mengecil secara proporsional */
+        height: 350px; /* Tetap portrait tapi pas untuk layar sentuh */
+    }
+}
+
+/* ==========================================
+   SECTION 10: HAMBURGER MENU FOR MOBILE (STYLE HMJ TI)
+   ========================================== */
+
+/* Setelan Dasar Tombol Garis 3 (Sembunyi di Laptop) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-color, #ffffff);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* KETIKA LAYAR HP (MAX-WIDTH: 768px) */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: space-between; /* Membagi ruang kiri, tengah, kanan */
+        align-items: center;
+        box-sizing: border-box;
+        z-index: 1000;
+        background-color: rgba(15, 15, 15, 0.95); /* Menjaga header tetap terbaca */
+        backdrop-filter: blur(10px);
+    }
+
+    /* Tombol Garis 3 Muncul di Kiri */
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* Logo Otomatis Geser ke Tengah */
+    header .logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.2rem;
+    }
+
+    /* Tombol Tema Tetap Kokoh di Kanan */
+    header .theme-btn {
+        z-index: 1001;
+    }
+
+    /* Laci Menu Masuk ke Garis 3 (Disembunyikan ke Atas Layar secara Default) */
+    header nav {
+        position: absolute;
+        top: -300px; /* Sembunyi di atas header */
+        left: 0;
+        width: 100%;
+        background-color: rgba(20, 20, 20, 0.98);
+        display: flex;
+        flex-direction: column; /* Menu berjejer ke bawah di HP */
+        padding: 20px 0;
+        gap: 0;
+        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+        z-index: 999;
+    }
+
+    /* Ketika Menu Aktif (Diklik), Meluncur Turun ke Bawah Header */
+    header nav.active {
+        top: 60px; /* Pas di bawah batas header */
+    }
+
+    header nav a {
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+        font-size: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+    }
+
+    /* Kembalikan teks menu utuh di HP karena lacinya sudah luas */
+    header nav a span {
+        display: inline !important; 
+    }
+
+    /* Efek Animasi Garis 3 Berubah Jadi Silang (X) Pas Diklik Buka */
+    .menu-toggle.active span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+/* ==========================================
+   SECTION 11: ADVANCED SCROLL REVEAL (PREMIUM & DYNAMIC)
+   ========================================== */
+
+/* 1. Efek Muncul dari Kiri (Untuk Kolom 1 / Kartu Ganjil) */
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-50px) scale(0.95);
+    transition: opacity 1.2s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: opacity, transform;
+}
+
+/* 2. Efek Muncul dari Kanan (Untuk Kolom 2 / Kartu Genap) */
+.reveal-right {
+    opacity: 0;
+    transform: translateX(50px) scale(0.95);
+    transition: opacity 1.2s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: opacity, transform;
+}
+
+/* 3. Efek Membesar Lembut (Untuk Elemen Tengah / Penghargaan) */
+.reveal-scale {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+    transition: opacity 1.2s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: opacity, transform;
+}
+
+/* KETIKA ELEMEN AKTIF (DIPICU JAVASCRIPT) */
+.reveal-visible {
+    opacity: 1;
+    transform: translateX(0) translateY(0) scale(1) !important;
+}
+
+/* INTERAKSI KARTU PREMIUM: Efek Mengambang & Cahaya Halus saat Disorot */
+.portfolio-card, .award-card, .committee-box {
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.portfolio-card:hover, .award-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* ==========================================
+   EFEK SMOOTH SCROLL LASTRY (STYLE HMJ TI)
+   ========================================== */
+html {
+    scroll-behavior: smooth; /* Membuat pergerakan meluncur halus saat menu diklik */
+    scroll-padding-top: 80px; /* FIX UTAMA: Memberi jarak di atas agar konten tidak tertutup header setelah meluncur */
+}
