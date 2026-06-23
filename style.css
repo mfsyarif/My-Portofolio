@@ -1,0 +1,687 @@
+/* ==========================================================================
+   1. PENGATURAN WARNA & AMBIENT PREMIUM (MAROON & BLUE METAL)
+   ========================================================================== */
+
+:root {
+    --bg-color: #050505; 
+    --text-color: #e2e8f0;
+    --text-main: #ffffff;
+    --text-muted: #94a3b8;
+    --text-sub: #64748b;
+    
+    /* Tema Maroon Premium */
+    --card-bg: rgba(20, 10, 10, 0.6);       
+    --border-color: rgba(159, 18, 57, 0.3);  
+    --border-hover: #f43f5e;               
+    --accent-color: #ffb300;
+    --shadow-color: rgba(159, 18, 57, 0.15);
+    --btn-bg: #ffffff;
+    --btn-text: #050505;
+    --btn-hover: #f1f5f9;
+}
+
+[data-theme="light"] {
+    --bg-color: #f8fafc;        
+    --text-color: #334155;     
+    --text-main: #0f172a;      
+    --text-muted: #475569;     
+    --text-sub: #64748b;
+    
+    /* Tema Biru Logam Premium */
+    --card-bg: rgba(240, 246, 252, 0.85);   
+    --border-color: rgba(14, 165, 233, 0.25); 
+    --border-hover: #0284c7;               
+    --accent-color: #0284c7;
+    --shadow-color: rgba(14, 165, 233, 0.1);
+    --btn-bg: #0f172a;         
+    --btn-text: #ffffff;
+    --btn-hover: #1e293b;
+}
+
+/* ==========================================================================
+   2. GLOBAL & BASE STYLE (SMOOTH SCROLL LASTRY HMTI)
+   ========================================================================== */
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color); 
+    color: var(--text-color);
+    overflow-x: hidden;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background-color: rgba(5, 5, 5, 0.4);
+    backdrop-filter: blur(20px); 
+    -webkit-backdrop-filter: blur(20px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+}
+
+[data-theme="light"] header {
+    background-color: rgba(248, 250, 252, 0.4);
+}
+
+header .logo {
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: var(--text-main);
+}
+
+nav a {
+    color: var(--text-color);
+    opacity: 0.6;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+}
+
+nav a:hover {
+    opacity: 1;
+    color: var(--accent-color);
+}
+
+/* ==========================================================================
+   3. HERO + VIDEO BACKGROUND STYLES
+   ========================================================================== */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 120px 20px 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.15;
+}
+
+[data-theme="light"] .video-background video {
+    opacity: 0.12; 
+    filter: grayscale(30%);
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, transparent 20%, var(--bg-color) 80%);
+}
+
+.hero h1 {
+    font-size: 3.5rem; 
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    color: var(--text-main);
+}
+
+.hero .hero-tagline {
+    font-size: 1rem;
+    color: var(--accent-color);
+    margin-bottom: 35px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.hero-about-text {
+    margin-bottom: 40px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 30px;
+}
+
+.hero-about-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    opacity: 0.85;
+    margin-bottom: 20px;
+}
+
+.hero-about-text p:last-child { margin-bottom: 0; }
+
+.btn {
+    display: inline-block;
+    padding: 16px 40px;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-radius: 50px; 
+    letter-spacing: 1px;
+    transition: all 0.4s ease;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px var(--border-hover);
+}
+
+/* ==========================================================================
+   4. PREMIUM CARD DESIGNS & GRID (FIXED FOR 4:5 IMAGE)
+   ========================================================================== */
+
+.gallery-section, .awards-section, .experience-section {
+    padding: 120px 8% 80px;
+    border-top: 1px solid var(--border-color);
+    position: relative;
+}
+
+h2 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+    color: var(--text-main);
+}
+
+.subtitle {
+    text-align: center;
+    color: var(--text-sub);
+    font-size: 1.05rem;
+    margin-bottom: 60px;
+    width: 100%;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+.portfolio-card, .award-card, .timeline-content, .committee-box {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    backdrop-fi
+    lter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+/* FIX DETAIL: Kotak Pembungkus Gambar Khusus Poster 4:5 */
+.portfolio-card .image-wrapper {
+    overflow: hidden;
+    height: 320px; 
+    background-color: rgba(0, 0, 0, 0.3); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    background-size: contain; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portfolio-card:hover .card-image {
+    transform: scale(1.06);
+}
+
+.card-info { padding: 30px; }
+
+.card-info .tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 14px;
+    border-radius: 30px;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-color);
+}
+
+.portfolio-grid .portfolio-card:nth-child(1) .tag { color: #38bdf8; } 
+.portfolio-grid .portfolio-card:nth-child(2) .tag { color: #4ade80; } 
+.portfolio-grid .portfolio-card:nth-child(3) .tag { color: #fbbf24; }
+
+.card-info h3 { font-size: 1.4rem; margin-bottom: 12px; color: var(--text-main); }
+.card-info p { color: var(--text-muted); line-height: 1.7; font-size: 0.95rem; }
+
+/* ==========================================================================
+   5. AWARDS SECTION STYLES (GOLD GRADIENT)
+   ========================================================================== */
+
+.awards-section h2 {
+    text-align: center;
+    background: linear-gradient(135deg, #ffe082 0%, #ffb300 50%, #ffa000 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.awards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 35px;
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+.award-card {
+    padding: 40px 30px;
+    border: 1px solid rgba(255, 179, 0, 0.15); 
+}
+
+[data-theme="light"] .award-card {
+    border: 1px solid rgba(2, 132, 199, 0.15); 
+}
+
+.award-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    display: inline-block;
+    filter: drop-shadow(0 4px 8px var(--shadow-color));
+    transition: transform 0.4s ease;
+}
+
+.award-card:hover .award-icon {
+    transform: scale(1.2) rotate(6deg); 
+}
+
+.award-card h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.award-meta {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #ffb300; 
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+[data-theme="light"] .award-meta {
+    color: #0284c7; 
+}
+
+.award-card p { font-size: 0.98rem; color: var(--text-muted); line-height: 1.7; }
+
+/* ==========================================================================
+   6. EXPERIENCE TIMELINE SECTION
+   ========================================================================== */
+
+.timeline {
+    max-width: 850px;
+    margin: 40px auto 0;
+    position: relative;
+    padding-left: 45px;
+    border-left: 2px dashed var(--border-color); 
+    text-align: left; 
+}
+
+.timeline-item { position: relative; margin-bottom: 50px; width: 100%; }
+.timeline-item:last-child { margin-bottom: 0; }
+
+.timeline-dot {
+    position: absolute;
+    left: -58px; 
+    top: 8px;
+    width: 24px;
+    height: 24px;
+    background-color: var(--bg-color);
+    border: 4px solid var(--accent-color);
+    border-radius: 50%;
+    z-index: 10;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.timeline-item:hover .timeline-dot {
+    background-color: var(--accent-color);
+    box-shadow: 0 0 20px var(--accent-color);
+    transform: scale(1.1);
+}
+
+.timeline-date {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--text-sub);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.timeline-content { padding: 30px; border-radius: 20px; width: 100%; display: block; }
+.timeline-content h3 { font-size: 1.4rem; font-weight: 700; color: var(--text-main); margin-bottom: 6px; }
+.timeline-content .company { color: var(--accent-color); font-weight: 700; font-size: 0.95rem; margin-bottom: 15px; display: inline-block; }
+.timeline-content p { font-size: 0.98rem; color: var(--text-muted); line-height: 1.7; }
+
+/* ==========================================================================
+   7. COMMITTEES CONTAINER & EXTRA COMP
+   ========================================================================== */
+
+.committees-container { 
+    max-width: 850px; 
+    margin: 80px auto 0; 
+    padding-top: 60px; 
+    border-top: 1px solid var(--border-color); 
+}
+
+/* ==========================================
+   8. TAMPILAN AKTIVITAS & PELATIHAN BARU (FIXED PADDING BOX)
+   ========================================== */
+
+.activities-grid-custom {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 30px; 
+    text-align: left;
+    margin-top: 25px;
+    width: 100%;
+}
+
+.committee-box {
+    padding: 35px 30px; 
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.committee-box h4 {
+    font-size: 1.25rem;
+    color: var(--text-main);
+    margin-bottom: 25px; 
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 12px;
+    font-weight: 700;
+}
+
+.activity-list-new { list-style: none; padding: 0; margin: 0; }
+.activity-list-new li { margin-bottom: 20px; font-size: 0.95rem; line-height: 1.6; color: var(--text-color); }
+.activity-list-new li:last-child { margin-bottom: 0; }
+
+/* ==========================================
+   9. HERO PROFILE LAYOUT & IMAGE FRAME
+   ========================================== */
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    z-index: 2;
+    position: relative;
+    gap: 50px;
+    width: 100%;
+}
+
+.hero-content { flex: 1; text-align: left; }
+.hero-profile-area { flex: 1; display: flex; justify-content: center; align-items: center; }
+
+.profile-frame {
+    width: 400px;        
+    height: 500px;       
+    border-radius: 24px; 
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+}
+
+.profile-frame:hover {
+    transform: translateY(-10px) scale(1.02); 
+    box-shadow: 0 30px 50px rgba(0, 0, 0, 0.8);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.profile-img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 100%; }
+
+/* ==========================================
+   10. HAMBURGER MENU FOR MOBILE (STYLE HMJ TI)
+   ========================================== */
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-color, #ffffff);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* ==========================================
+   11. ADVANCED SCROLL REVEAL & HOVER (INERTIA SPRING PHYSICS)
+   ========================================== */
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-50px) scale(0.95);
+    transition: opacity 1.2s cubic-bezier(0.34, 1.56, 0.64, 1), transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(50px) scale(0.95);
+    transition: opacity 1.2s cubic-bezier(0.34, 1.56, 0.64, 1), transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-scale {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+    transition: opacity 1.2s cubic-bezier(0.34, 1.56, 0.64, 1), transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-visible { opacity: 1; transform: translateX(0) translateY(0) scale(1) !important; }
+
+/* Integrasi Hover Melenting Sempurna */
+.portfolio-card, .award-card, .timeline-content, .committee-box {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.portfolio-card:hover, .award-card:hover, .timeline-content:hover, .committee-box:hover {
+    transform: translateY(-12px) scale(1.03);
+    border-color: var(--border-hover);
+    box-shadow: 0 30px 60px var(--shadow-color);
+}
+
+.award-card:hover { border-color: #ffb300; box-shadow: 0 20px 40px rgba(255, 179, 0, 0.15); }
+[data-theme="light"] .award-card:hover { border-color: var(--border-hover); box-shadow: 0 20px 40px var(--shadow-color); }
+
+/* ==========================================================================
+   ANTONIM THEME BUTTON (MATAHARI & BULAN) - HIGH SPECIFICITY
+   ========================================================================== */
+
+header .theme-btn {
+    background: none !important;
+    border: none !important;
+    cursor: pointer;
+    margin-left: 25px;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+header .theme-btn .theme-icon {
+    width: 22px !important;
+    height: 22px !important;
+    transition: all 0.3s ease;
+}
+
+header .theme-btn:hover { transform: scale(1.15) rotate(20deg); }
+
+/* TAMPILAN GELAP (DEFAULT) -> MUNCULKAN MATAHARI MAS */
+header .theme-btn .sun-icon {
+    display: block !important;
+    stroke: #ffb300 !important; 
+    fill: transparent !important;
+}
+header .theme-btn .moon-icon { display: none !important; }
+
+/* TAMPILAN TERANG (LIGHT MODE) -> MUNCULKAN BULAN BIRU */
+[data-theme="light"] header .theme-btn .sun-icon { display: none !important; }
+[data-theme="light"] header .theme-btn .moon-icon {
+    display: block !important;
+    stroke: #0284c7 !important; 
+    fill: #0284c7 !important;   
+}
+
+/* ==========================================
+   12. FOOTER CENTERED
+   ========================================== */
+
+footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    color: var(--text-sub);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    background-color: transparent;
+    text-align: center;
+}
+
+footer p { margin: 0 auto; width: 100%; }
+
+/* ==========================================================================
+   13. MEDIA QUERIES RESPONSIVE (LAPTOP & HP ADAPTATION)
+   ========================================================================== */
+
+@media (max-width: 968px) {
+    .hero-container { flex-direction: column-reverse; text-align: center; padding: 0 20px; gap: 30px; }
+    .hero-content { text-align: center; }
+    .profile-frame { width: 280px; height: 350px; }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+        position: fixed;
+        width: 100%;
+        top: 0; left: 0;
+        display: flex;
+        justify-content: space-between; 
+        align-items: center;
+        box-sizing: border-box;
+        z-index: 1000;
+        background-color: rgba(15, 15, 15, 0.95); 
+        backdrop-filter: blur(10px);
+    }
+
+    [data-theme="light"] header { background-color: rgba(248, 250, 252, 0.95); }
+
+    .menu-toggle { display: flex; }
+    header .logo { position: absolute; left: 50%; transform: translateX(-50%); font-size: 1.2rem; }
+    header .theme-btn { z-index: 1001; }
+
+    header nav {
+        position: absolute;
+        top: -300px; left: 0; width: 100%;
+        background-color: rgba(20, 20, 20, 0.98);
+        display: flex;
+        flex-direction: column; 
+        padding: 20px 0;
+        gap: 0;
+        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        border-bottom: 2px solid var(--border-color);
+        z-index: 999;
+    }
+
+    [data-theme="light"] header nav { background-color: rgba(240, 244, 248, 0.98); }
+
+    header nav.active { top: 55px; }
+    header nav a { width: 100%; text-align: center; padding: 15px 0; font-size: 1rem; border-bottom: 1px solid rgba(255, 255, 255, 0.02); margin-left: 0; }
+    header nav a span { display: inline !important; }
+
+    .menu-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle.active span:nth-child(2) { opacity: 0; }
+    .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    .activities-grid-custom { grid-template-columns: 1fr; gap: 25px; }
+    .committee-box { padding: 25px 20px; }
+    .timeline { padding-left: 30px; margin-top: 30px; }
+    .timeline-dot { left: -41px; width: 18px; height: 18px; top: 6px; border-width: 3px; }
+    .timeline-content { padding: 20px; }
+    .timeline-content h3 { font-size: 1.2rem; }
+    .hero h1 { font-size: 2.3rem; }
+    .gallery-section, .awards-section, .experience-section { padding: 80px 5% 60px; }
+}
+
+/* ==========================================================================
+   FIX HOVER LINK AREA KARTU (TAMBAHKAN DI PALING BAWAH FILE)
+   ========================================================================== */
+.portfolio-card-link {
+    display: block;
+    text-decoration: none;
+    width: 100%;
+}
+
+/* Memaksa kartu melenting saat pembungkus link-nya di-hover */
+.portfolio-card-link:hover .portfolio-card {
+    transform: translateY(-12px) scale(1.03) !important;
+    border-color: var(--border-hover) !important;
+    box-shadow: 0 30px 60px var(--shadow-color) !important;
+}
